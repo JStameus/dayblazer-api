@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 
-p, button, h3, h4 {
+button, h3, h4 {
   color: #e5daa0;
   background-color: #4e5a5e;
   border: 1px solid #67d391;
@@ -23,6 +23,46 @@ header {
 header #header_viewControl, header #header_modeControl {
   display: flex;
   flex-direction: row;
+}
+
+.mainView_month {
+  margin: 0.5rem 1.25rem;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  grid-gap: 0.4rem;
+}
+.mainView_month .day_monthView {
+  border: 2px solid #e5daa0;
+  border-radius: 4px;
+  background-color: #4e5a5e;
+  min-height: 8rem;
+}
+.mainView_month .day_monthView p {
+  color: #e5daa0;
+  text-align: center;
+  position: relative;
+  box-sizing: content;
+  width: 15%;
+  float: left;
+  margin-top: 0.2rem;
+}
+
+footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  position: absolute;
+  bottom: 0%;
+  width: 100%;
+  border-top: 2px solid #67d391;
+  background-color: #4e5e59;
+}
+footer #footer_trackIcon {
+  border: 2px solid #e5daa0;
+  border-radius: 50%;
+  padding: 0.5rem;
 }
 
 /*# sourceMappingURL=main.css.map */
