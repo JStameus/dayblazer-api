@@ -5,9 +5,9 @@
 }
 
 button, h3, h4 {
-  color: #e5daa0;
+  color: #e2d9ba;
   background-color: #4e5a5e;
-  border: 1px solid #67d391;
+  border: 1px solid #afc193;
   border-radius: 4px;
   padding: 0.4rem;
 }
@@ -18,7 +18,7 @@ header {
   justify-content: space-evenly;
   align-items: center;
   background-color: #4e5e59;
-  border-bottom: 2px solid #67d391;
+  border-bottom: 2px solid blue;
 }
 header #header_viewControl, header #header_modeControl {
   display: flex;
@@ -27,16 +27,32 @@ header #header_viewControl, header #header_modeControl {
 
 .mainView_week {
   display: grid;
-  grid-template-rows: repeat(7, 1fr);
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: 1fr;
+  background-color: #afa692;
+  min-height: 100%;
 }
 
 .day_weekView {
-  border: 2px solid #67d391;
-  height: 100%;
+  margin: 0 0.3rem;
+  border-left: 1px solid darkgray;
+  border-right: 1px solid darkgray;
+  background-color: #cec2a9;
 }
 .day_weekView h3 {
   text-align: center;
+  border-bottom: 2px solid darkgray;
+}
+.day_weekView div {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.day_weekView div .day_hourSpan {
+  color: black;
+  margin: 0.1rem 0.2rem;
+  border-bottom: 1px solid darkgray;
+  height: 1.8rem;
 }
 
 .mainView_month {
@@ -48,13 +64,13 @@ header #header_viewControl, header #header_modeControl {
 }
 
 .day_monthView {
-  border: 2px solid #e5daa0;
+  border: 2px solid #e2d9ba;
   border-radius: 4px;
   background-color: #4e5a5e;
   min-height: 8rem;
 }
 .day_monthView p {
-  color: #e5daa0;
+  color: #e2d9ba;
   text-align: center;
   position: relative;
   box-sizing: content;
@@ -66,18 +82,38 @@ header #header_viewControl, header #header_modeControl {
 footer {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   align-items: center;
   position: absolute;
   bottom: 0%;
   width: 100%;
-  border-top: 2px solid #67d391;
+  height: 4rem;
+  border-top: 2px solid #afc193;
   background-color: #4e5e59;
 }
+footer #footer_trackLevel {
+  flex: 1;
+}
 footer #footer_trackIcon {
-  border: 2px solid #e5daa0;
+  border: 2px solid #e2d9ba;
   border-radius: 50%;
   padding: 0.5rem;
+  text-align: center;
+  flex: 1;
+}
+footer #footer_progressBar {
+  color: white;
+  flex: 7;
+  border: 1px solid #e2d9ba;
+  border-radius: 8px;
+  background-color: #4e5a5e;
+  padding: 0.4rem;
+}
+footer #footer_xpDisplay {
+  flex: 1;
+}
+footer * {
+  margin: 0 1rem;
 }
 
 /*# sourceMappingURL=style_main.css.map */

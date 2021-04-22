@@ -1,7 +1,10 @@
-$fg-color-normal: #e5daa0;
+$fg-color-normal: #e2d9ba;
 $bg-color-normal: #4e5e59;
 $bg-color-lighter: #4e5a5e;
-$accent-color: #67d391;
+$accent-color: #afc193;
+
+$paper-color-light: #cec2a9;
+$paper-color-dark: #afa692;
 
 $border-radius-small: 4px;
 $border-radius-large: 8px;
@@ -34,21 +37,37 @@ header {
     }
 
     background-color: $bg-color-normal;
-    border-bottom: 2px solid $accent-color;
+    border-bottom: 2px solid blue;
 }
 
 // -- WEEK VIEW --
 .mainView_week {
     display: grid;
-    grid-template-rows: repeat(7, 1fr);  
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(7, 1fr);  
+    grid-template-rows: 1fr;
+    background-color: $paper-color-dark;
+    min-height: 100%;
 }
 
 .day_weekView {
-    border: 2px solid $accent-color;
-    height: 100%;
+    margin: 0 0.3rem;
+    border-left: 1px solid darkgray;
+    border-right: 1px solid darkgray;
+    background-color: $paper-color-light;
     h3 {
         text-align: center;
+        border-bottom: 2px solid darkgray;
+    }
+    div {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        .day_hourSpan {
+            color: black;
+            margin: 0.1rem 0.2rem;
+            border-bottom: 1px solid darkgray;
+            height: 1.8rem;
+        }
     }
 }
 
@@ -80,18 +99,42 @@ header {
 footer {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: flex-start;
     align-items: center;
     position: absolute;
     bottom: 0%;
     width: 100%;
+    height: 4rem;
     
     border-top: 2px solid $accent-color;
     background-color: $bg-color-normal;
+
+    #footer_trackLevel {
+        flex: 1;
+    }
 
     #footer_trackIcon {
         border: 2px solid $fg-color-normal;
         border-radius: 50%;
         padding: 0.5rem;
+        text-align: center;
+        flex: 1;
+    }
+
+    #footer_progressBar {
+        color: white;
+        flex: 7;
+        border: 1px solid $fg-color-normal;
+        border-radius: $border-radius-large;
+        background-color: $bg-color-lighter;
+        padding: 0.4rem;
+    }
+
+    #footer_xpDisplay {
+        flex: 1;
+    }
+
+    * {
+        margin: 0 1rem;
     }
 }
