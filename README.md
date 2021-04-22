@@ -29,5 +29,3 @@ more!
 
 The goal is to make everyday life a little more exciting, and give users
 opportunities to try new things that they wouldn't otherwise.
-
-

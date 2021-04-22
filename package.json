@@ -1,0 +1,30 @@
+{
+  "name": "dayblazer-calendar",
+  "version": "1.0.0",
+  "description": "A calendar and planner app where you can take on optional side-quests, collect achievements and make life a little more adventurous!",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JStameus/dayblazer-calendar.git"
+  },
+  "keywords": [
+    "calendar",
+    "planner",
+    "gamification",
+    "events"
+  ],
+  "author": "JStameus",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JStameus/dayblazer-calendar/issues"
+  },
+  "homepage": "https://github.com/JStameus/dayblazer-calendar#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

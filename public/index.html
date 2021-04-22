@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Dayblazer Calendar</title>
+		<meta name="description" content="A gamified calendar app" />
+		<meta name="author" content="JStameus" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="./styles/main.css" />
+	</head>
+
+	<body>
+        <header>
+            <button>Menu</button>
+            <div id="header_viewControl">
+                <button> <= </button>
+                <h3 id="header_viewControl_current">CURRENT</h3>
+                <button> => </button>
+            </div>
+            <div id="header_modeControl">
+                <h4 class="header_modeControl_option">Week</h4>
+                <h4 class="header_modeControl_option">Month</h4>
+                <h4 class="header_modeControl_option">Year</h4>
+            </div>
+            <button>Profile</button>
+        </header>
+        <main class="mainView_month">
+            <div class="day_weekView">
+               <h3>Monday</h3> 
+            </div>
+            <div class="day_weekView">
+               <h3>Tuesday</h3> 
+            </div>
+            <div class="day_weekView">
+               <h3>Wednesday</h3> 
+            </div>
+            <div class="day_weekView">
+               <h3>Thursday</h3> 
+            </div>
+            <div class="day_weekView">
+               <h3>Friday</h3> 
+            </div>
+            <div class="day_weekView">
+               <h3>Saturday</h3> 
+            </div>
+            <div class="day_weekView">
+               <h3>Sunday</h3> 
+            </div>
+        </main>
+        <footer>
+            <h2 id="footer_trackLevel">Lv. 3</h2>
+            <div id="footer_trackIcon">TR</div>
+            <h3 id="footer_xpDisplay">300/1000</h3>
+            <div id="footer_progressBar">PROGRESS BAR</div>
+        </footer>
+        <script src="./app.js"></script>
+	</body>
+</html>
+

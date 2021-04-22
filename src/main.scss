@@ -37,30 +37,46 @@ header {
     border-bottom: 2px solid $accent-color;
 }
 
+// -- WEEK VIEW --
+.mainView_week {
+    display: grid;
+    grid-template-rows: repeat(7, 1fr);  
+    grid-template-columns: 1fr;
+}
+
+.day_weekView {
+    border: 2px solid $accent-color;
+    height: 100%;
+    h3 {
+        text-align: center;
+    }
+}
+
+// -- MONTH VIEW --
 .mainView_month {
     margin: 0.5rem 1.25rem;
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     grid-template-rows: repeat(4, 1fr);
     grid-gap: 0.4rem;
-    .day_monthView {
-        border: 2px solid $fg-color-normal;
-        border-radius: $border-radius-small;
-        background-color: $bg-color-lighter;
-        min-height: 8rem;
-        p {
-            //border: 1px dotted red;
-            color: $fg-color-normal;
-            text-align: center;
-            position: relative;
-            box-sizing: content;
-            width: 15%;
-            float: left;
-            margin-top: 0.2rem;
-        }
-    }
 }
 
+.day_monthView {
+    border: 2px solid $fg-color-normal;
+    border-radius: $border-radius-small;
+    background-color: $bg-color-lighter;
+    min-height: 8rem;
+    p {
+        //border: 1px dotted red;
+        color: $fg-color-normal;
+        text-align: center;
+        position: relative;
+        box-sizing: content;
+        width: 15%;
+        float: left;
+        margin-top: 0.3rem;
+    }
+}
 footer {
     display: flex;
     flex-direction: row;
