@@ -1,0 +1,38 @@
+$fg-color-normal: #e5daa0;
+$bg-color-normal: #4e5e59;
+$bg-color-lighter: #4e5a5e;
+$accent-color: #67d391;
+
+$border-radius-small: 4px;
+$border-radius-large: 8px;
+
+$text-padding-small: 0.4rem;
+$text-padding-large: 0.6rem;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+p, button, h3, h4 {
+    color: $fg-color-normal;
+    background-color: $bg-color-lighter;
+    border: 1px solid $accent-color;
+    border-radius: $border-radius-small;
+    padding: $text-padding-small;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    #header_viewControl, #header_modeControl {
+        display: flex;
+        flex-direction: row;
+    }
+
+    background-color: $bg-color-normal;
+    border-bottom: 2px solid $accent-color;
+}

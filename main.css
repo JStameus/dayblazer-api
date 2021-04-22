@@ -1,0 +1,28 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+p, button, h3, h4 {
+  color: #e5daa0;
+  background-color: #4e5a5e;
+  border: 1px solid #67d391;
+  border-radius: 4px;
+  padding: 0.4rem;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: #4e5e59;
+  border-bottom: 2px solid #67d391;
+}
+header #header_viewControl, header #header_modeControl {
+  display: flex;
+  flex-direction: row;
+}
+
+/*# sourceMappingURL=main.css.map */
