@@ -13,6 +13,7 @@ button, h3, h4 {
 }
 
 header {
+  height: 3rem;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -30,7 +31,7 @@ header #header_viewControl, header #header_modeControl {
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: 1fr;
   background-color: #afa692;
-  min-height: 100%;
+  min-height: calc(100vh - 7rem);
 }
 
 .day_weekView {
@@ -38,12 +39,17 @@ header #header_viewControl, header #header_modeControl {
   border-left: 1px solid darkgray;
   border-right: 1px solid darkgray;
   background-color: #cec2a9;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 .day_weekView h3 {
+  flex: 2;
   text-align: center;
   border-bottom: 2px solid darkgray;
 }
 .day_weekView div {
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -84,7 +90,7 @@ footer {
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  position: absolute;
+  position: fixed;
   bottom: 0%;
   width: 100%;
   height: 4rem;
@@ -114,6 +120,14 @@ footer #footer_xpDisplay {
 }
 footer * {
   margin: 0 1rem;
+}
+
+.event {
+  background-color: indianred;
+  border: 1px solid white;
+}
+.event p {
+  text-shadow: 1px 1px 2px 12px blue;
 }
 
 /*# sourceMappingURL=style_main.css.map */

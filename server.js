@@ -1,6 +1,11 @@
+// External modules
 import express from "express";
 import handlebars from "express-handlebars";
 import path from "path";
+
+// My own modules
+import EventController from "./controllers/event.js";
+import CalendarController from "./controllers/calendar.js";
 
 const app = express();
 
@@ -20,52 +25,12 @@ app.engine("handlebars", handlebars({
 }));
 
 // Data to render the page with
-let dataObject = {
-    calendarInfo: {
-        currentWeek: "w. 16",
-        currentMonth: "April",
-        currentYear: "2021"
-    },
-    weekDays: [
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday",
-        "Sunday"
-    ],
-    hourSpans: [
-        "00:00",
-        "01:00",
-        "02:00",
-        "03:00",
-        "04:00",
-        "05:00",
-        "06:00",
-        "07:00",
-        "08:00",
-        "09:00",
-        "10:00",
-        "11:00",
-        "12:00",
-        "13:00",
-        "14:00",
-        "15:00",
-        "16:00",
-        "17:00",
-        "18:00",
-        "19:00",
-        "20:00",
-        "21:00",
-        "22:00",
-        "23:00",
-    ]
-};
+let eventList = EventController.getEventList();
+let calendarInfo = CalendarController.getCalendarInfo();
 
 // -- ROUTES --
 app.get("/", (req, res) => {
-    res.render("main", dataObject);
+    res.render("main", calendarInfo);
 })
 
 // -- INITIALIZATION --
