@@ -1,58 +1,29 @@
-// NOTE: Most of this is for testing purposes. A more dynamic solution will have
-// to be implemented when the back-end is up and running.
-let months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December"
-]
-let currentMonth = months[3];
-let currentWeek = "W 16";
-
-const viewModes = {
-    week: "Week",
-    month: "Month",
-    year: "Year"
-}
-let currentViewMode = viewModes.week;
-
-function updateWeekView() {
-    const currentDisplay = document.querySelector("#header_viewControl_current");
-    currentDisplay.textContent = currentWeek;
+function daysInMonth(month, year) {
+    return new Date(year, month, 0).getDate();
 }
 
-function updateMonthView() {
-    const currentDisplay = document.querySelector("#header_viewControl_current");
-    currentDisplay.textContent = currentMonth;
+function createDayDiv(date) {
+    const dayDiv = document.createElement("div");
+    dayDiv.classList.add("monthView_day");
+    
+    const label = document.createElement("p");
+    label.textContent = date;
+    dayDiv.appendChild(label);
+
+    return dayDiv;
 }
 
-function updateYearView() {
-
+function populateMonthView() {
+    const grid = document.querySelector("#monthView_dayGrid");
+    const dayCount = daysInMonth(4, 2021);
+    for(i = 0; i < dayCount; i++) {
+        grid.appendChild(createDayDiv(i+1));
+    }
 }
 
 function init() {
-    switch(currentViewMode) {
-        case "Week":
-            console.log("View Mode: WEEK");
-            updateWeekView();
-            break;
-        case "Month":
-            console.log("View Mode: MONTH");
-            updateMonthView();
-            break;
-        case "Year":
-            console.log("View Mode: YEAR");
-            updateYearView();
-            break;
-    }
+    console.log("Loading Month View");
+    populateMonthView();
 }
 
 init();

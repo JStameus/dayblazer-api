@@ -1,16 +1,5 @@
-$fg-color-normal: #e2d9ba;
-$bg-color-normal: #4e5e59;
-$bg-color-lighter: #4e5a5e;
-$accent-color: #afc193;
-
-$paper-color-light: #cec2a9;
-$paper-color-dark: #afa692;
-
-$border-radius-small: 4px;
-$border-radius-large: 8px;
-
-$text-padding-small: 0.4rem;
-$text-padding-large: 0.6rem;
+@import "./variables/_variables";
+@import "./components/_components";
 
 * {
     margin: 0;
@@ -18,137 +7,73 @@ $text-padding-large: 0.6rem;
     box-sizing: border-box;
 }
 
-button, h3, h4 {
-    color: $fg-color-normal;
-    background-color: $bg-color-lighter;
-    border: 1px solid $accent-color;
-    border-radius: $border-radius-small;
-    padding: $text-padding-small;
-}
+//$calendar-cell-size: 8.5rem;
+$calendar-cell-width: 10rem;
+$calendar-cell-height: 9rem;
+$calendar-column-spacing: 0.5rem;
+$calendar-row-spacing: 0.5rem;
 
-header {
-    height: 3rem;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-    #header_viewControl, #header_modeControl {
-        display: flex;
-        flex-direction: row;
-    }
-
-    background-color: $bg-color-normal;
-    border-bottom: 2px solid blue;
-}
-
-// -- WEEK VIEW --
-.mainView_week {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);  
-    grid-template-rows: 1fr;
-    background-color: $paper-color-dark;
-    min-height: calc(100vh - 7rem);
-}
-
-.day_weekView {
-    margin: 0 0.3rem;
-    border-left: 1px solid darkgray;
-    border-right: 1px solid darkgray;
-    background-color: $paper-color-light;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    h3 {
-        flex: 2;
-        text-align: center;
-        border-bottom: 2px solid darkgray;
-    }
-    div {
-        flex: 1;
+main {
+    .monthView_container {
         display: flex;
         flex-direction: column;
-        justify-content: flex-end;
-        .day_hourSpan {
-            color: black;
-            margin: 0.1rem 0.2rem;
-            border-bottom: 1px solid darkgray;
-            height: 1.8rem;
+        justify-content: flex-start;
+        align-items: center;
+        #monthView_header {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            margin: 0.4rem 0;
+            h2, h3 {
+                text-align: center;
+            }
+            border-bottom: 2px solid black;
+        }
+        #monthView_dayLabels {
+            display: grid;
+            grid-template-columns: repeat(7, $calendar-cell-width);
+            gap: $calendar-row-spacing;
+            h3 {
+                border: 1px solid blue;
+            }
+        }
+        #monthView_dayGrid {
+            display: grid;
+            grid-template-columns: repeat(7, $calendar-cell-width);
+            grid-template-rows: repeat(5, $calendar-cell-height);
+            gap: $calendar-row-spacing;
         }
     }
 }
 
-// -- MONTH VIEW --
-.mainView_month {
-    margin: 0.5rem 1.25rem;
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    grid-template-rows: repeat(4, 1fr);
-    grid-gap: 0.4rem;
+.monthView_day {
+    border: 2px solid green;
+    border-radius: 4px;
 }
 
-.day_monthView {
-    border: 2px solid $fg-color-normal;
-    border-radius: $border-radius-small;
-    background-color: $bg-color-lighter;
-    min-height: 8rem;
-    p {
-        //border: 1px dotted red;
-        color: $fg-color-normal;
-        text-align: center;
-        position: relative;
-        box-sizing: content;
-        width: 15%;
-        float: left;
-        margin-top: 0.3rem;
-    }
+.dayColumn_container {
+    border: 2px dashed red;
+    width: 12rem;
 }
-footer {
+
+// TEMPORARY - MOVE THESE LATER
+header {
+    width: 100vw; 
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
     align-items: center;
-    position: fixed;
-    bottom: 0%;
-    width: 100%;
-    height: 4rem;
-    
-    border-top: 2px solid $accent-color;
-    background-color: $bg-color-normal;
-
-    #footer_trackLevel {
-        flex: 1;
-    }
-
-    #footer_trackIcon {
-        border: 2px solid $fg-color-normal;
-        border-radius: 50%;
-        padding: 0.5rem;
-        text-align: center;
-        flex: 1;
-    }
-
-    #footer_progressBar {
-        color: white;
-        flex: 7;
-        border: 1px solid $fg-color-normal;
-        border-radius: $border-radius-large;
-        background-color: $bg-color-lighter;
-        padding: 0.4rem;
-    }
-
-    #footer_xpDisplay {
-        flex: 1;
-    }
-
-    * {
-        margin: 0 1rem;
-    }
+    justify-content: space-evenly;
+    border: 2px solid red;
 }
 
-.event {
-    background-color: indianred;
-    border: 1px solid white;
-    p {
-        text-shadow: 1px 1px 2px 12px blue;
-    }
+footer {
+    position: fixed;
+    bottom: 0;
+
+    width: 100vw; 
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
 }

@@ -39,6 +39,7 @@
     "current": {
         "week": "w. 16",
         "month": "April",
-        "year": "2021"
+        "year": "2021",
+        "dayAmount": 31
     }
 }
