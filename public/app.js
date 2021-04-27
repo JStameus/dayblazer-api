@@ -3,22 +3,18 @@
 // 35 is the maximum amount of grid items that fit on one screen
 const maxGridItems = 35;
 const dayGrid = document.querySelector("#monthView_dayGrid");
-const currentDate = new Date();
-const daysInCurrentMonth = getDaysInMonth(
-    currentDate.getMonth() + 1,
-    currentDate.getFullYear());
-const weekDays = [
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-    "Sunday",
-];
 
-function getDaysInMonth(month, year) {
-    return new Date(year, month, 0).getDate();
+const currentDate = new Date();
+const daysInCurrentMonth = getDaysInMonth(currentDate);
+
+const previousMonth = new Date();
+previousMonth.setMonth(currentDate.getMonth() - 1);
+const nextMonth = new Date();
+nextMonth.setMonth(currentDate.getMonth() + 1);
+
+// TODO: This function can be cleaned up so that it only needs a date
+function getDaysInMonth(date) {
+    return new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
 }
 
 // Take a date as an argument, and return the first weekday of that month
@@ -30,7 +26,7 @@ function getFirstWeekDayInMonth(date) {
         .toString()
         .split(" ")[0];
     // TODO: Maybe there's a better way to do this, but it works for now, and I
-    // can't be bothered with the Date object's arcane nonsense API anymore
+    // can't be bothered with the Date object's arcane nonsense anymore
     switch (firstDayDateSlice) {
         case "Mon":
             return {weekday: "Monday", index: 0};
@@ -66,15 +62,13 @@ function createDayDiv(type, date) {
 
 // Takes a date as an argument, and creates a calendar grid of that date's
 // corresponding month
-// TODO: Make this more reusable by taking any date as an argument
+// TODO: This function can be cleaned up so that it only needs a date
 function createCalendarGrid() {
     const firstDayOfMonth = getFirstWeekDayInMonth(currentDate);
 
     // Getting a list of the last days of the previous month, and using it to
     // get the date numbers to use for the "previous" day divs
-    const daysInPreviousMonth = getDaysInMonth(
-            currentDate.getMonth() - 1,
-            currentDate.getFullYear());
+    const daysInPreviousMonth = getDaysInMonth(previousMonth);
 
     // TODO: Is there a cleaner way to do this?
     // Create an array of all the dates of the previous month, and slice it down
