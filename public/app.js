@@ -2,24 +2,28 @@ function daysInMonth(month, year) {
     return new Date(year, month, 0).getDate();
 }
 
-function createDayDivs() {
+function createDayDiv(date) {
+    const dayDiv = document.createElement("div");
+    dayDiv.classList.add("monthView_day");
+    
+    const label = document.createElement("p");
+    label.textContent = date;
+    dayDiv.appendChild(label);
+
+    return dayDiv;
+}
+
+function populateMonthView() {
     const grid = document.querySelector("#monthView_dayGrid");
     const dayCount = daysInMonth(4, 2021);
     for(i = 0; i < dayCount; i++) {
-        const newDiv = document.createElement("div");
-        newDiv.classList.add("monthView_day");
-        
-        const label = document.createElement("p");
-        label.textContent = i + 1;
-        newDiv.appendChild(label);
-        grid.appendChild(newDiv);
-
+        grid.appendChild(createDayDiv(i+1));
     }
 }
 
 function init() {
     console.log("Eat beans");
-    createDayDivs();
+    populateMonthView();
 }
 
 init();
