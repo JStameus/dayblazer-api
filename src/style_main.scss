@@ -7,19 +7,54 @@
     box-sizing: border-box;
 }
 
+//$calendar-cell-size: 8.5rem;
+$calendar-cell-width: 10rem;
+$calendar-cell-height: 9rem;
+$calendar-column-spacing: 0.5rem;
+$calendar-row-spacing: 0.5rem;
+
 main {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+    .monthView_container {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        #monthView_header {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            margin: 0.4rem 0;
+            h2, h3 {
+                text-align: center;
+            }
+            border-bottom: 2px solid black;
+        }
+        #monthView_dayLabels {
+            display: grid;
+            grid-template-columns: repeat(7, $calendar-cell-width);
+            gap: $calendar-row-spacing;
+            h3 {
+                border: 1px solid blue;
+            }
+        }
+        #monthView_dayGrid {
+            display: grid;
+            grid-template-columns: repeat(7, $calendar-cell-width);
+            grid-template-rows: repeat(5, $calendar-cell-height);
+            gap: $calendar-row-spacing;
+        }
+    }
+}
+
+.monthView_day {
+    border: 2px solid green;
+    border-radius: 4px;
 }
 
 .dayColumn_container {
     border: 2px dashed red;
     width: 12rem;
-}
-
-.dayColumn_body {
-    
 }
 
 // TEMPORARY - MOVE THESE LATER
