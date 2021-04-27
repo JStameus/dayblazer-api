@@ -22,7 +22,7 @@ function populateMonthView() {
 }
 
 function init() {
-    console.log("Eat beans");
+    console.log("Loading Month View");
     populateMonthView();
 }
 
