@@ -57,6 +57,22 @@ main {
     width: 12rem;
 }
 
+.previous {
+    background-color: darkgray;
+}
+
+.current {
+    background-color: green;
+}
+
+.next {
+    background-color: orange;
+}
+
+.today {
+    border: 2px dashed red;
+}
+
 // TEMPORARY - MOVE THESE LATER
 header {
     width: 100vw; 

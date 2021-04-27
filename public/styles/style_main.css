@@ -157,6 +157,22 @@ main .monthView_container #monthView_dayGrid {
   width: 12rem;
 }
 
+.previous {
+  background-color: darkgray;
+}
+
+.current {
+  background-color: green;
+}
+
+.next {
+  background-color: orange;
+}
+
+.today {
+  border: 2px dashed red;
+}
+
 header {
   width: 100vw;
   display: flex;
