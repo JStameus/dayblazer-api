@@ -1,3 +1,5 @@
+// TODO: Some of these should probably be supplied by the server
+// MAIN CALENDAR VARIABLES
 // 35 is the maximum amount of grid items that fit on one screen
 const maxGridItems = 35;
 const dayGrid = document.querySelector("#monthView_dayGrid");
@@ -19,8 +21,7 @@ function getDaysInMonth(month, year) {
     return new Date(year, month, 0).getDate();
 }
 
-// Take a date as an argument, and return which weekday is the first day of that
-// month
+// Take a date as an argument, and return the first weekday of that month
 function getFirstWeekDayInMonth(date) {
     const month = date.getMonth();
     const year = date.getFullYear();
@@ -50,10 +51,16 @@ function getFirstWeekDayInMonth(date) {
     }
 }
 
-function createDayDiv(type) {
+function createDayDiv(type, date) {
     const newDiv = document.createElement("div");
     newDiv.className= "monthView_day";
     newDiv.classList.add(type);
+
+    const dateLabel = document.createElement("h4");
+    dateLabel.textContent = date;
+    // TODO: dateLabel should probably have a class of its own
+
+    newDiv.appendChild(dateLabel);
     return newDiv;
 }
 
@@ -63,20 +70,35 @@ function createDayDiv(type) {
 function createCalendarGrid() {
     const firstDayOfMonth = getFirstWeekDayInMonth(currentDate);
 
+    // Getting a list of the last days of the previous month, and using it to
+    // get the date numbers to use for the "previous" day divs
+    const daysInPreviousMonth = getDaysInMonth(
+            currentDate.getMonth() - 1,
+            currentDate.getFullYear());
+
+    // TODO: Is there a cleaner way to do this?
+    // Create an array of all the dates of the previous month, and slice it down
+    // to the appropriate amount needed to fill in the calendar
+    let remainder = [];
+    for(let c = 1; c <= daysInPreviousMonth; c++) {
+        remainder.push(c);
+    }
+    remainder = remainder.slice(Math.max(remainder.length - firstDayOfMonth.index, 0));
+    
     // Add the previous days up to the first weekday of the date
     for(let i = 0; i < firstDayOfMonth.index; i++) {
-        dayGrid.appendChild(createDayDiv("previous"));
+        dayGrid.appendChild(createDayDiv("previous", remainder[i]));
     }     
 
     // Add all the days of the current month
     for(let i = 0; i < daysInCurrentMonth; i++) {
-        dayGrid.appendChild(createDayDiv("current"));
+        dayGrid.appendChild(createDayDiv("current", i+1));
     }
 
     // Fill up the rest of the grid with next month's days
     const daysRemaining = maxGridItems - dayGrid.children.length;
     for(let i = 0; i < daysRemaining; i++) {
-        dayGrid.appendChild(createDayDiv("next"));
+        dayGrid.appendChild(createDayDiv("next", i+1));
     }
 
     // Lastly, add the "today" class to the current day
