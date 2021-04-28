@@ -42,7 +42,7 @@ app.get("/api", (req, res) => {
     EventController.getAllEventLists(req, res);
 });
 
-app.get("/api?u=:user", (req, res) => {
+app.get("/api/u=:user", (req, res) => {
     // Get events belonging to the selected user
     EventController.getOwnerEventList(req.params.user, req, res);
 });
