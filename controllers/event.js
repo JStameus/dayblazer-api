@@ -1,8 +1,11 @@
 import Event from "../models/event.js";
 
-function getEventList() {
-    const eventList = Event.findAll();
-    return eventList;
+function getAllEventLists(req, res) {
+    res.json(Event.findAll());
 }
 
-export default {getEventList};
+function getOwnerEventList(owner, req, res) {
+    res.json(Event.findByOwner(owner));
+}
+
+export default {getAllEventLists, getOwnerEventList};

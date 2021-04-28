@@ -31,24 +31,21 @@ app.engine("handlebars", handlebars({
 }));
 
 // Data to render the page with
-let eventList = EventController.getEventList();
 let calendarInfo = CalendarController.getCalendarInfo();
 
-let myData = {
-    name: "Jean-Paul",
-    level: 5,
-};
-
 // -- ROUTES --
+// Getting the homepage
 app.get("/", (req, res) => {
     res.render("main", calendarInfo);
 });
 
-app.get("/calendar/u=:user", (req, res) => {
+app.get("/api", (req, res) => {
+    EventController.getAllEventLists(req, res);
+});
+
+app.get("/api?u=:user", (req, res) => {
     // Get events belonging to the selected user
-    res.json(JSON.parse(fs.readFileSync(path.resolve("./data/events.json"), {
-        encoding: "utf-8",
-    })));
+    EventController.getOwnerEventList(req.params.user, req, res);
 });
 
 // -- INITIALIZATION --
