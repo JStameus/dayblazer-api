@@ -35,7 +35,7 @@ let calendarInfo = CalendarController.getCalendarInfo();
 // -- ROUTES --
 // Getting the homepage
 app.get("/", (req, res) => {
-    res.render("main", calendarInfo);
+    res.send("Index page!");
 });
 
 app.get("/api", (req, res) => {
