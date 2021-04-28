@@ -12,7 +12,6 @@ previousMonth.setMonth(currentDate.getMonth() - 1);
 const nextMonth = new Date();
 nextMonth.setMonth(currentDate.getMonth() + 1);
 
-// TODO: This function can be cleaned up so that it only needs a date
 function getDaysInMonth(date) {
     return new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
 }

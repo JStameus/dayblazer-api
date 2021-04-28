@@ -1,10 +1,21 @@
-[
-    {
-        "id": "ba421",
-        "name": "Eat beans",
-        "description": "I am hungry, and I am craving some beans. I should eat some.",
-        "date": "DD-MM-YYYY",
-        "startTime": "9:00",
-        "endTime": "11:00"
-    }
-]
+{
+    "owner": "jstameus",
+    "events": [
+        {
+            "id": "ba421",
+            "name": "Eat beans",
+            "description": "I am hungry, and I am craving some beans. I should eat some.",
+            "date": "24-04-2021",
+            "startTime": "9:00",
+            "endTime": "11:00"
+        },
+        {
+            "id": "gi102",
+            "name": "Get good at Nodejs",
+            "description": "I am hungry, and I am craving some beans. I should eat some.",
+            "date": "26-04-2021",
+            "startTime": "11:00",
+            "endTime": "12:00"
+        }
+    ]
+}
