@@ -3,7 +3,15 @@ import path from "path";
 
 const events = JSON.parse(fs.readFileSync(path.resolve("./data/events.json")));
 
-function randomID() {
+function findAll() {
+    return events;
+}
+
+function findByOwner(owner) {
+    return events.filter(board => board.owner === owner);  
+}
+
+function createRandomID() {
     let id = "";
     const letters = "abcdefghijklmnopqrstuvwxyz";
     const numbers = "1234567890";
@@ -17,14 +25,10 @@ function randomID() {
     return id;
 }
 
-function findAll() {
-    return events;
-}
-
 function addNew(body) {
     try {
         const newEvent = {
-            id: randomID(),
+            id: createRandomID(),
             // TODO: It probably shouldn't be possible to not set a name. Make
             // sure to handle this properly.
             name: body.name || "Unnamed",
@@ -35,9 +39,9 @@ function addNew(body) {
         }
     }
     catch(err) {
-        console.log(`ERROR: {err}`);
+        console.log(`ERROR: ${err}`);
         return false;
     }
 }
 
-export default {randomID, findAll, addNew};
+export default {createRandomID, findAll, addNew, findByOwner};
