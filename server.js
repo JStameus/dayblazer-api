@@ -2,7 +2,6 @@
 import express from "express";
 import handlebars from "express-handlebars";
 import path from "path";
-import fs from "fs";
 
 // My own modules
 import EventController from "./controllers/event.js";
