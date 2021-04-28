@@ -2,6 +2,7 @@
 import express from "express";
 import handlebars from "express-handlebars";
 import path from "path";
+import fs from "fs";
 
 // My own modules
 import EventController from "./controllers/event.js";
@@ -22,16 +23,33 @@ app.engine("handlebars", handlebars({
     partialsDir: path.resolve("./views/partials"),
     defaultLayout: "index",
     extname: "handlebars",
+    helpers: {
+        showName: (a) => {
+            console.log(a.toUpperCase());
+        },
+    }
 }));
 
 // Data to render the page with
 let eventList = EventController.getEventList();
 let calendarInfo = CalendarController.getCalendarInfo();
 
+let myData = {
+    name: "Jean-Paul",
+    level: 5,
+};
+
 // -- ROUTES --
 app.get("/", (req, res) => {
     res.render("main", calendarInfo);
-})
+});
+
+app.get("/calendar/u=:user", (req, res) => {
+    // Get events belonging to the selected user
+    res.json(JSON.parse(fs.readFileSync(path.resolve("./data/events.json"), {
+        encoding: "utf-8",
+    })));
+});
 
 // -- INITIALIZATION --
 app.listen(PORT, () => {
