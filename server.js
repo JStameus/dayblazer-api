@@ -5,7 +5,6 @@ import path from "path";
 
 // My own modules
 import EventController from "./controllers/event.js";
-import CalendarController from "./controllers/calendar.js";
 
 const app = express();
 
@@ -19,11 +18,6 @@ app.use(express.static(PUBLICDIR));
 // TODO: Are there any security concerns I need to learn about here?
 app.use(cors());
 
-// Data to render the page with
-// TODO: Do I need this? All the relevant information about today's date can be
-// created by the client-side app.
-let calendarInfo = CalendarController.getCalendarInfo();
-
 // -- ROUTES --
 // Getting the homepage
 app.get("/", (req, res) => {
@@ -36,7 +30,7 @@ app.get("/api", (req, res) => {
 
 app.get("/api/u=:user", (req, res) => {
     // Get events belonging to the selected user after validating the request
-    EventController.getOwnerEventList(req.params.user, req, res);
+    EventController.getOwnerEventList(req, res);
 });
 
 // -- INITIALIZATION --

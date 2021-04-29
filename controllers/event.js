@@ -1,40 +1,70 @@
 import Event from "../models/event.js";
 
-function getAllEventLists(req, res) {
+// TODO: Either this is only for testing and should never be exposed to the end
+// user, or it should be removed as it would probably never be useful.
+function getAllEventLists(_req, res) {
     res.json(Event.findAll());
 }
 
-function getOwnerEventList(owner, req, res) {
-    if (validateOwner(req, owner)) {
-        res.json(Event.findByOwner(owner));
-    }
-    else {
-        // TODO: Should I make this response different depending on if the token
-        // was incorrect, or the user? Would that reveal too much information?
-        const errorResponse = {
-            message: "Sorry, the requested resource could not be retrieved."
+// TODO: Since the validateOwner function also gets an event board from the
+// model, the model sends that event board twice. Is that a performance issue?
+function getOwnerEventList(req, res) {
+    // TODO: This is a lot of variables just to compose a message. Do I need to
+    // clean this up?
+    const timeStamp = getTimeStamp();
+    const requestingUser = req.header("User-Name");
+    const tokenAccepted = validateToken(req);
+    const ownerAccepted = validateOwner(req, req.params.user);
+    const tokenStatusMessage = tokenAccepted ? "Accepted" : "Rejected"; 
+    const ownerStatusMessage = ownerAccepted ? "Accepted" : "Rejected";
+    const requestStatusMessage = tokenAccepted && ownerAccepted ? "GRANTED" : "DENIED";
+    const logMessage = `${timeStamp} | User '${requestingUser}' requested access to event board. | Token: ${tokenStatusMessage} | Owner: ${ownerStatusMessage} | ${requestStatusMessage}`;
+
+    // TODO: Maybe I should save these messages in a log file of some sort?
+    console.log(logMessage);
+    if(validateToken(req) && validateOwner(req, req.params.user)) {
+        res.json(Event.findByOwner(requestingUser));
+    } else {
+        res.status(403);
+        const responseObject = {
+            message: "Sorry, the requested resource could not be retrieved.",
+            reason: "Access denied"
         };
-        res.status(404);
-        res.json(errorResponse);
+        res.json(responseObject);
     }
 }
 
-// Checks the request header for a token and who sent it, and returns true if
-// the user requesting the information IS the owner.
-function validateOwner(req, owner) {
-    // TODO: Implement proper token creation/validation
-    const validToken = "abc123";
-    if (req.header("Board-Token") === validToken) {
-        // TODO: I'm not actually checking for the real owner here.
-        if (req.header("User-Name") === owner) {
-            console.log("TRUE");
-            return true;
-        }
+// Checks the request against the owner supplied as a second argument, and
+// returns true of they match. 
+function validateOwner(req, requestedOwner) {
+    const requestedEventBoard = Event.findByOwner(requestedOwner);
+    const requestingUser = req.header("User-Name");
+
+    if(requestingUser === requestedEventBoard.owner) {
+        return true;
     }
-    // If the sent token does not correspond to the valid one, and the user is
-    // not the owner of the requested resource, return false
-    console.log("FALSE");
     return false;
+}
+
+function validateToken(req) {
+    // TODO: Obviously this dummy token will have to be dynamically generated,
+    // and much more complex. Something something sha256sum?
+    const validToken = "abc123";
+
+    if(req.header("Board-Token") === validToken) {
+        return true;
+    }
+    return false;
+}
+
+// TODO: Does this function belong here? 
+function getTimeStamp() {
+    const timeStamp = new Date();
+    const date = timeStamp.toLocaleDateString();
+    const hours = timeStamp.getHours();
+    // TODO: This gives me a single digit if it's less than 10. Looks dumb :(
+    const minutes = timeStamp.getMinutes();
+    return `${date} - ${hours}:${minutes}`;
 }
 
 export default {getAllEventLists, getOwnerEventList};
