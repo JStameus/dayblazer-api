@@ -1,4 +1,5 @@
 import Event from "../models/event.js";
+import colors from "colors/safe.js";
 
 // TODO: Either this is only for testing and should never be exposed to the end
 // user, or it should be removed as it would probably never be useful.
@@ -13,12 +14,13 @@ function getOwnerEventList(req, res) {
     // clean this up?
     const timeStamp = getTimeStamp();
     const requestingUser = req.header("User-Name");
+    const userString = colors.italic(colors.blue(req.header("User-Name")));
     const tokenAccepted = validateToken(req);
     const ownerAccepted = validateOwner(req, req.params.user);
-    const tokenStatusMessage = tokenAccepted ? "Accepted" : "Rejected"; 
-    const ownerStatusMessage = ownerAccepted ? "Accepted" : "Rejected";
-    const requestStatusMessage = tokenAccepted && ownerAccepted ? "GRANTED" : "DENIED";
-    const logMessage = `${timeStamp} | User '${requestingUser}' requested access to event board. | Token: ${tokenStatusMessage} | Owner: ${ownerStatusMessage} | ${requestStatusMessage}`;
+    const tokenStatusMessage = tokenAccepted ? colors.green("Accepted"): colors.red("Rejected"); 
+    const ownerStatusMessage = ownerAccepted ? colors.green("Accepted"): colors.red("Rejected"); 
+    const requestStatusMessage = tokenAccepted && ownerAccepted ? colors.underline(colors.green("GRANTED")) : colors.underline(colors.red("DENIED"));
+    const logMessage = `${timeStamp} | User '${userString}' requested access to event board. | Token: ${tokenStatusMessage} | Owner: ${ownerStatusMessage} | ${requestStatusMessage}`;
 
     // TODO: Maybe I should save these messages in a log file of some sort?
     console.log(logMessage);

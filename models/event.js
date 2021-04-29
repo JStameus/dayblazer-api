@@ -8,6 +8,7 @@ function findAll() {
 }
 
 function findByOwner(owner) {
+    // TODO: What happens if there is no board? That should be handled here.
     return events.find(board => board.owner === owner);  
 }
 
