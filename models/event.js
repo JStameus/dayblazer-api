@@ -8,7 +8,7 @@ function findAll() {
 }
 
 function findByOwner(owner) {
-    return events.filter(board => board.owner === owner);  
+    return events.find(board => board.owner === owner);  
 }
 
 function createRandomID() {

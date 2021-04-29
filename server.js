@@ -1,7 +1,6 @@
 // External modules
 import express from "express";
 import cors from "cors";
-import handlebars from "express-handlebars";
 import path from "path";
 
 // My own modules
@@ -19,20 +18,10 @@ const PUBLICDIR = path.resolve("./public");
 app.use(express.static(PUBLICDIR));
 // TODO: Are there any security concerns I need to learn about here?
 app.use(cors());
-app.set("view engine", "handlebars");
-app.engine("handlebars", handlebars({
-    layoutsDir: path.resolve("./views/layouts"),
-    partialsDir: path.resolve("./views/partials"),
-    defaultLayout: "index",
-    extname: "handlebars",
-    helpers: {
-        showName: (a) => {
-            console.log(a.toUpperCase());
-        },
-    }
-}));
 
 // Data to render the page with
+// TODO: Do I need this? All the relevant information about today's date can be
+// created by the client-side app.
 let calendarInfo = CalendarController.getCalendarInfo();
 
 // -- ROUTES --
@@ -46,7 +35,7 @@ app.get("/api", (req, res) => {
 });
 
 app.get("/api/u=:user", (req, res) => {
-    // Get events belonging to the selected user
+    // Get events belonging to the selected user after validating the request
     EventController.getOwnerEventList(req.params.user, req, res);
 });
 
