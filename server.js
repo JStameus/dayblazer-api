@@ -1,5 +1,6 @@
 // External modules
 import express from "express";
+import cors from "cors";
 import handlebars from "express-handlebars";
 import path from "path";
 
@@ -16,6 +17,8 @@ const PORT = 3000;
 const PUBLICDIR = path.resolve("./public");
 
 app.use(express.static(PUBLICDIR));
+// TODO: Are there any security concerns I need to learn about here?
+app.use(cors());
 app.set("view engine", "handlebars");
 app.engine("handlebars", handlebars({
     layoutsDir: path.resolve("./views/layouts"),
