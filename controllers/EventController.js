@@ -1,4 +1,4 @@
-import Event from "../models/event.js";
+import Event from "../models/EventModel.js";
 import colors from "colors/safe.js";
 
 // TODO: Either this is only for testing and should never be exposed to the end

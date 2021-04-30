@@ -4,7 +4,7 @@ import cors from "cors";
 import path from "path";
 
 // My own modules
-import EventController from "./controllers/event.js";
+import EventController from "./controllers/EventController.js";
 
 const app = express();
 
@@ -21,7 +21,7 @@ app.use(cors());
 // -- ROUTES --
 // Getting the homepage
 app.get("/", (req, res) => {
-    res.send("Index page!");
+    res.send("Loading Index page...");
 });
 
 app.get("/api", (req, res) => {
