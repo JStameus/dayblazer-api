@@ -1,6 +1,7 @@
 [
     {
         "owner": "jstameus",
+        "guests": [],
         "events": [
             {
                 "id": "ba421",
@@ -78,6 +79,7 @@
     },
     {
         "owner": "preston",
+        "guests": [],
         "events": [
             {
                 "id": "ea912",

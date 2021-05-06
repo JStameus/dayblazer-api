@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 
-const events = JSON.parse(fs.readFileSync(path.resolve("./data/events.json")));
+const events = JSON.parse(fs.readFileSync(path.resolve("./data/events_master.json")));
 
 function findAll() {
     return events;

@@ -1,0 +1,22 @@
+{
+    "owner": "preston",
+    "guests": [],
+    "events": [
+        {
+            "id": "ea912",
+            "name": "Fix a rift in the space-time continuum",
+            "description": "I accidentally ripped up a thread in the ground, with disastrous consequences. I need to fix that.",
+            "date": "18-05-2021",
+            "startTime": "10:00",
+            "endTime": "18:00"
+        },
+        {
+            "id": "ln281",
+            "name": "Take out the trash..",
+            "description": "..the cosmic trash!",
+            "date": "27-05-2021",
+            "startTime": "14:00",
+            "endTime": "16:00"
+        }
+    ]
+}
