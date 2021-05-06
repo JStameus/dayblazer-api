@@ -17,6 +17,7 @@ const PUBLICDIR = path.resolve("./public");
 app.use(express.static(PUBLICDIR));
 // TODO: Are there any security concerns I need to learn about here?
 app.use(cors());
+app.use(express.json());
 
 // -- ROUTES --
 // Getting the homepage
@@ -31,6 +32,10 @@ app.get("/api", (req, res) => {
 app.get("/api/u=:user", (req, res) => {
     // Get events belonging to the selected user after validating the request
     EventController.getOwnerEventList(req, res);
+});
+
+app.post("/api", (req, res) => {
+    EventController.updateEventList(req, res);
 });
 
 // -- INITIALIZATION --

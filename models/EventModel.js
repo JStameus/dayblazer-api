@@ -1,15 +1,15 @@
 import fs from "fs";
 import path from "path";
 
-const events = JSON.parse(fs.readFileSync(path.resolve("./data/events.json")));
-
 function findAll() {
-    return events;
+    const eventList = JSON.parse(fs.readFileSync(path.resolve("./data/events_master.json")));
+    return eventList;
 }
 
 function findByOwner(owner) {
     // TODO: What happens if there is no board? That should be handled here.
-    return events.find(board => board.owner === owner);  
+    const eventList = JSON.parse(fs.readFileSync(path.resolve(`./data/events/events_${owner}.json`)));
+    return eventList;
 }
 
 function createRandomID() {
@@ -26,23 +26,10 @@ function createRandomID() {
     return id;
 }
 
-function addNew(body) {
-    try {
-        const newEvent = {
-            id: createRandomID(),
-            // TODO: It probably shouldn't be possible to not set a name. Make
-            // sure to handle this properly.
-            name: body.name || "Unnamed",
-            description: body.description || "No description",
-            date: body.date || "N/A",
-            startTime: body.startTime || "N/A",
-            endTime: body.endTime || "N/A",
-        }
-    }
-    catch(err) {
-        console.log(`ERROR: ${err}`);
-        return false;
-    }
+// Overwrites the entire event list(data) of the specified owner
+function updateEventList(data, owner) {
+    const newEventList = JSON.stringify(data);
+    fs.writeFileSync(path.resolve(`./data/events/events_${owner}.json`), newEventList);
 }
 
-export default {createRandomID, findAll, addNew, findByOwner};
+export default {createRandomID, findAll, findByOwner, updateEventList};
