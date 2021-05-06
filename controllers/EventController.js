@@ -25,4 +25,12 @@ function getOwnerEventList(req, res) {
     }
 }
 
-export default {getAllEventLists, getOwnerEventList};
+function updateEventList(req, res) {
+    if(utils.validateToken(req)) {
+        console.log(`RECIEVING POST REQUEST FROM '${req.header("User-Name")}'`);
+        // TODO: The body is just {}. Is this a server or client error? 
+        console.log(JSON.stringify(req.body));
+    }
+}
+
+export default {getAllEventLists, getOwnerEventList, updateEventList};
