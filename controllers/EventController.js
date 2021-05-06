@@ -7,8 +7,6 @@ function getAllEventLists(_req, res) {
     res.json(Event.findAll());
 }
 
-// TODO: Since the validateOwner function also gets an event board from the
-// model, the model sends that event board twice. Is that a performance issue?
 function getOwnerEventList(req, res) {
     const requestingUser = req.header("User-Name");
     // TODO: Throws an error "Event.findByOwner is not a function". Why?
@@ -27,10 +25,9 @@ function getOwnerEventList(req, res) {
 
 function updateEventList(req, res) {
     if(utils.validateToken(req)) {
-        console.log(`RECIEVING POST REQUEST FROM '${req.header("User-Name")}'`);
-        // TODO: The body is just {}. Is this a server or client error? 
-        console.log(JSON.stringify(req.body));
+        Event.updateEventList(req.body, req.header("User-Name"));
     }
+    res.json({message: `Updated event board of user: ${req.header("User-Name")}.`});
 }
 
 export default {getAllEventLists, getOwnerEventList, updateEventList};

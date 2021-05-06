@@ -35,10 +35,7 @@ app.get("/api/u=:user", (req, res) => {
 });
 
 app.post("/api", (req, res) => {
-    // TODO: Fix this EventController function and make sure it actually handles
-    // the request body properly
-    //EventController.updateEventList(req, res);
-    console.log("TODO: Someone is trying to post and save their event list.");
+    EventController.updateEventList(req, res);
 });
 
 // -- INITIALIZATION --

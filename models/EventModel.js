@@ -32,5 +32,4 @@ function updateEventList(data, owner) {
     fs.writeFileSync(path.resolve(`./data/events/events_${owner}.json`), newEventList);
 }
 
-
 export default {createRandomID, findAll, findByOwner, updateEventList};

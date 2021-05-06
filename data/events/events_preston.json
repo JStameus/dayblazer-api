@@ -8,7 +8,9 @@
                 "description": "I accidentally ripped up a thread in the ground, with disastrous consequences. I need to fix that.",
                 "date": "18-05-2021",
                 "startTime": "10:00",
-                "endTime": "18:00"
+                "endTime": "18:00",
+                "type": "task",
+                "finished": false
             },
             {
                 "id": "ln281",
@@ -16,7 +18,9 @@
                 "description": "..the cosmic trash!",
                 "date": "27-05-2021",
                 "startTime": "14:00",
-                "endTime": "16:00"
+                "endTime": "16:00",
+                "type": "task",
+                "finished": false
             }
         ]
 }
