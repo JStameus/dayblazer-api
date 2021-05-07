@@ -10,6 +10,8 @@
                 "startTime": "10:00",
                 "endTime": "18:00",
                 "type": "task",
+                "difficulty": 3,
+                "xpValue": 750,
                 "finished": false
             },
             {
@@ -20,6 +22,8 @@
                 "startTime": "14:00",
                 "endTime": "16:00",
                 "type": "task",
+                "difficulty": 1,
+                "xpValue": 150,
                 "finished": false
             }
         ]
