@@ -1,6 +1,37 @@
 import fs from "fs";
 import path from "path";
 
+class EventData {
+    constructor(id, name, description, date, type, difficulty, start, end, finished, locked) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.date = date;
+        this.type = type;
+        this.difficulty = difficulty;
+        this.start = start;
+        this.end = end;
+        this.finished = finished; 
+        this.locked = locked;
+    }
+    send() {
+        return JSON.stringify({
+            id: this.id,
+            name: this.name,
+            description: this.description,
+            date: this.date,
+            type: this.type,
+            difficulty: this.difficulty,
+            startTime: this.start,
+            endTime: this.end,
+            finished: this.finished,
+        });
+    }
+    validate(data) {
+             
+    }
+}
+
 function findAll() {
     const eventList = JSON.parse(fs.readFileSync(path.resolve("./data/events_master.json")));
     return eventList;
