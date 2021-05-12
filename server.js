@@ -26,7 +26,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/api", (req, res) => {
-    EventController.getAllEventLists(req, res);
+    res.redirect("./api.html");
 });
 
 app.get("/api/u=:user", (req, res) => {
@@ -38,6 +38,10 @@ app.post("/api", (req, res) => {
     EventController.updateEventList(req, res);
 });
 
+// Redirect to error page 
+app.get("*", (req, res) => {
+    res.redirect("./error.html");
+})
 // -- INITIALIZATION --
 app.listen(PORT, () => {
     console.log(`Dayblazer Calendar: Server listening on Port ${PORT}`);
